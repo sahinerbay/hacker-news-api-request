@@ -1,4 +1,6 @@
 let xmlHttpPlain = function () {
+
+    //Retrieve Story Details By ID
     let loadStoriesById = (storyId) => {
         let xhttp = new XMLHttpRequest();
 
@@ -30,6 +32,7 @@ let xmlHttpPlain = function () {
         xhttp.send();
     }
 
+    //Request First Story IDs then Limits The Story IDs Array and Calls loadStoriesById inside ForEach
     let loadStories = (url, callback, storyAmount) => {
         let xhttp = new XMLHttpRequest();
 
@@ -53,6 +56,7 @@ let xmlHttpPlain = function () {
         xhttp.send();
     };
 
+    //Limit The Returned StoryIDs Array
     let getTopStories = (dataJSON, storyAmount) => {
 
         let resultObj = JSON.parse(dataJSON); //converts JSON to Object Deserializing
