@@ -1,2 +1,2 @@
 # hacker-news-api-request
-Creating Plain XMLHttp requests and with Promises
+Using JavaScript's legacy XMLHttpRequest object alone and with Promises.
