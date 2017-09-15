@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hacker News API XMLHttpRequests</title>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+
+<body>
+    <main>
+        <div class="column-50">
+            <label for="plainStoryNumber">Number of Stories</label>
+            <input type="number" id="plainStoryNumber">
+            <button id="plainButton">Plain</button>
+            <h2>XMLHttpRequest Plain:</h2>
+            <div id="plain"></div>
+        </div>
+
+        <div class="column-50">
+            <label for="promiseStoryNumber">Number of Stories</label>
+            <input type="number" id="promiseStoryNumber">
+            <button id="promiseButton">Promise</button>
+            <h2>XMLHttpRequest Promise:</h2>
+            <div id="promise"></div>
+        </div>
+    </main>
+    <script src='./xmlHttpPromise.js'></script>
+    <script src='./xmlHttpPlain.js'></script>
+</body>
+
+</html>
