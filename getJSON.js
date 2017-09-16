@@ -11,8 +11,11 @@ $(function () {
 
         $.getJSON(url)
             .then(function (storyIDs) {
-                let storyTopTenIDs = storyIDs.slice(0, limit);
-                storyTopTenIDs.forEach((storyID) => {
+                let storyLimitedIDs = storyIDs.slice(0, limit);
+                return storyLimitedIDs;
+            })
+            .then((topStoryIDS) => {
+                topStoryIDS.forEach((storyID) => {
                     $.getJSON(`https://hacker-news.firebaseio.com/v0/item/${storyID}.json`).then((storyDetail) => {
                         insertDom(storyDetail);
                     })
@@ -20,11 +23,24 @@ $(function () {
             })
     };
 
-    $('#getJSONButton').on('click', function(){
-        $('#getJSON').empty(); //removes all the stories
-        let limit = $('#getJSONStoryNumber').val()
-        loadStory('https://hacker-news.firebaseio.com/v0/topstories.json', limit);
-    })
-    
+    let removeAllStories = (el) => {
+        el.empty();
+    }
 
+    let getNumberOfStories = (input) => {
+        return input.val();
+    }
+
+    $('#getJSONButton').on('click', function () {
+        //Remove Stories
+        let $stories = $('#getJSON');
+        removeAllStories($stories);
+
+        //Get Number Of Stories Input Value
+        let $StoryNumberInput = $('#getJSONStoryNumber');
+        let numberOfStories = getNumberOfStories($StoryNumberInput);
+
+        //Fetch Stories
+        loadStory('https://hacker-news.firebaseio.com/v0/topstories.json', numberOfStories);
+    })
 })
