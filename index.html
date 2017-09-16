@@ -8,11 +8,12 @@
     <title>Hacker News API Requests</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
     <main>
-        <div class="column-25">
+        <div class="column-20">
             <label for="plainStoryNumber">Number of Stories</label>
             <input type="number" id="plainStoryNumber">
             <button id="plainButton">Plain</button>
@@ -20,7 +21,7 @@
             <div id="plain"></div>
         </div>
 
-        <div class="column-25">
+        <div class="column-20">
             <label for="promiseStoryNumber">Number of Stories</label>
             <input type="number" id="promiseStoryNumber">
             <button id="promiseButton">Promise</button>
@@ -28,22 +29,31 @@
             <div id="promise"></div>
         </div>
 
-        <div class="column-25">
+        <div class="column-20">
             <label for="getJSONStoryNumber">Number of Stories</label>
             <input type="number" id="getJSONStoryNumber">
-            <button id="getJSONButton">Promise</button>
+            <button id="getJSONButton">getJSON</button>
             <h2>$.getJSON:</h2>
             <div id="getJSON"></div>
         </div>
 
-        <div class="column-25">
+        <div class="column-20">
             <label for="fetchAPIStoryNumber">Number of Stories</label>
             <input type="number" id="fetchAPIStoryNumber">
-            <button id="fetchAPIButton">Promise</button>
+            <button id="fetchAPIButton">Fetch API</button>
             <h2>Fetch API:</h2>
             <div id="fetchAPI"></div>
         </div>
+
+        <div class="column-20">
+            <label for="axiosAPIStoryNumber">Number of Stories</label>
+            <input type="number" id="axiosAPIStoryNumber">
+            <button id="axiosAPIButton">Axios API</button>
+            <h2>Axios API:</h2>
+            <div id="axiosAPI"></div>
+        </div>
     </main>
+    <script src="./axios.js"></script>
     <script src="./fetchapi.js"></script>
     <script src='./getJSON.js'></script>
     <script src='./xmlHttpPromise.js'></script>
