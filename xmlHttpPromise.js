@@ -99,7 +99,7 @@ const story = (function () {
 let getStories = (url) => {
     let promiseDiv = document.getElementById('promise').innerHTML = "";
     let requestedStories = document.getElementById('promiseStoryNumber').value;
-    story.xmlHttpPromise('https://hacker-news.firebaseio.com/v0/topstories.json', requestedStories);
+    story.xmlHttpPromise(url, requestedStories);
 }
 
 document.getElementById('promiseButton').addEventListener('click', () => {
