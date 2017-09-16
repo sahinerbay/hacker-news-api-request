@@ -15,7 +15,7 @@ $(function () {
                 return storyLimitedIDs;
             })
             .then((topStoryIDS) => {
-                topStoryIDS.forEach((storyID) => {
+               $.each(topStoryIDS, (key, storyID) => {
                     $.getJSON(`https://hacker-news.firebaseio.com/v0/item/${storyID}.json`).then((storyDetail) => {
                         insertDom(storyDetail);
                     })
