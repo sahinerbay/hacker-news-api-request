@@ -24,7 +24,7 @@ let xmlHttpPlain = function () {
         };
 
         xhttp.onerror = () => {
-            console.log(`status: ${xhttp.status} and status-text: ${xhttp.statusText}`);
+            console.log('Error fetching data.');
         };
 
         let url = `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`
@@ -49,7 +49,7 @@ let xmlHttpPlain = function () {
         };
 
         xhttp.onerror = () => {
-            console.log(`status: ${xhttp.status} and status-text: ${xhttp.statusText}`);
+            console.log('Error fetching data.');
         };
 
         xhttp.open("GET", url); //leave empty or false for Asynchronous

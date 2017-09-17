@@ -15,7 +15,7 @@ const story = (function () {
 
             //onerror fires when there is  a denied cross-domain request
             xhttp.onerror = () => {
-                reject(Error(xhttp.statusText));
+                reject(Error('Error fetching data.'));
             };
 
             xhttp.open("GET", url); //leave empty or false for Asynchronous
@@ -68,7 +68,7 @@ const story = (function () {
 
         //onerror fires when there is  a denied cross-domain request
         xhttp.onerror = () => {
-            console.log(`status: ${xhttp.status} and status-text: ${xhttp.statusText}`);
+            console.log('Error fetching data.');
         };
 
         xhttp.open("GET", `https://hacker-news.firebaseio.com/v0/item/${storyId}.json`); //leave empty or false for Asynchronous
@@ -82,6 +82,8 @@ const story = (function () {
             .then((result) => {
                 let topStoryIds = limitIds(result, limit);
                 return topStoryIds;
+            }, (error) => {
+                console.log(error.message);
             })
             //Load Stories
             .then((topIds) => {
