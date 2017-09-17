@@ -36,6 +36,7 @@ let fetchAPI = (function () {
             .then((story) => {
                 addStoryToDOM(story);
             })
+            .catch(error => console.log('error:', error));
     };
 
     let getStory = (url, limit) => {
@@ -47,6 +48,7 @@ let fetchAPI = (function () {
                     findStoryById(storyId)
                 });
             }) // Transform the data into json
+            .catch(error => console.log('error:', error));
     };
 
     return {
