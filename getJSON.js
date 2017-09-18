@@ -39,6 +39,8 @@ $(function () {
                         insertDom(storyDetail);
                     })
                 })
+            })
+            .then(() => {
                 end = new Date();
                 insertResponseTime();
             })

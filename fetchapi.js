@@ -58,16 +58,18 @@ let fetchAPI = (function () {
         fetch(url)
             .then((resp) => {
                 start = Date.now();
-                return resp.json()
+                return resp.json() // Transform the data into json
             })
             .then((storyIDs) => {
                 limitedStoryIDs = storyIDs.slice(0, limit);
                 limitedStoryIDs.forEach((storyId) => {
                     findStoryById(storyId)
                 });
+            })
+            .then(() => {
                 end = Date.now();
                 insertResponseTime();
-            }) // Transform the data into json
+            }) 
             .catch(error => console.log('error:', error));
     };
 

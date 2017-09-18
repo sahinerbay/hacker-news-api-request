@@ -68,6 +68,9 @@ let axiosApi = (function () {
                 limitedStoryIDs.forEach((storyId) => {
                     getStoryObject(storyId);
                 });
+                
+            })
+            .then (()=> {
                 end = Date.now();
                 insertResponseTime();
             })

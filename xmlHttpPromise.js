@@ -106,6 +106,8 @@ const story = (function () {
                 topIds.forEach((id) => {
                     getOneStory(id);
                 });
+            })
+            .then(() => {
                 end = Date.now();
                 insertResponseTime();
             })
