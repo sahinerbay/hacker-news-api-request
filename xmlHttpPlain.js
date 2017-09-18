@@ -1,5 +1,20 @@
 let xmlHttpPlain = function () {
 
+    let calculateResponseTime = (endTime, startTime) => {
+        //The result of subtracting two dates is the number of milliseconds
+        let timeDiff = endTime - startTime;
+        // 1000 milliseconds in a second
+        return timeDiff / 1000;
+    };
+
+    let insertResponseTime = () => {
+        if ($('#plainTime')) $('#plainTime').remove();
+        let $para = $("<p id = 'plainTime' ></p>").html('').text('Response Time:' + calculateResponseTime(end, start));
+        $para.insertBefore('#plain');
+    };
+
+    let start, end;
+
     //Retrieve Story Details By ID
     let loadStoriesById = (storyId) => {
         let xhttp = new XMLHttpRequest();
@@ -39,10 +54,13 @@ let xmlHttpPlain = function () {
         xhttp.onload = () => {
             if (xhttp.readyState === 4) { // XMLHttpRequest.DONE
                 if (xhttp.status === 200) {
+                    start = Date.now();
                     let topStories = callback(xhttp.responseText, storyAmount);
                     topStories.forEach((storyId) => {
                         loadStoriesById(storyId);
                     })
+                    end = Date.now();
+                    insertResponseTime();
 
                 } else console.log(`status: ${xhttp.status} and status-text: ${xhttp.statusText}`);
             }
