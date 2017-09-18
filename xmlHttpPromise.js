@@ -1,5 +1,20 @@
 //Retrieves All The StoryIds
 const story = (function () {
+    let calculateResponseTime = (endTime, startTime) => {
+        //The result of subtracting two dates is the number of milliseconds
+        let timeDiff = endTime - startTime;
+        // 1000 milliseconds in a second
+        return timeDiff / 1000;
+    };
+
+    let insertResponseTime = () => {
+        if ($('#promiseTime')) $('#promiseTime').remove();
+        let $para = $("<p id = 'promiseTime' ></p>").html('').text('Response Time:' + calculateResponseTime(end, start));
+        $para.insertBefore('#promise');
+    };
+
+    let start, end;
+
     let getAllIds = (url) => {
 
         return new Promise(function (resolve, reject) {
@@ -8,6 +23,7 @@ const story = (function () {
             xhttp.onload = () => {
                 if (xhttp.readyState === 4) { // XMLHttpRequest.DONE
                     if (xhttp.status === 200) {
+                        start = Date.now();
                         resolve(xhttp.responseText);
                     } else reject(Error(xhttp.statusText));
                 }
@@ -89,7 +105,9 @@ const story = (function () {
             .then((topIds) => {
                 topIds.forEach((id) => {
                     getOneStory(id);
-                })
+                });
+                end = Date.now();
+                insertResponseTime();
             })
     };
 
