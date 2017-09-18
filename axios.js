@@ -1,4 +1,19 @@
-let axiousApi = (function () {
+let axiosApi = (function () {
+    let calculateResponseTime = (endTime, startTime) => {
+        //The result of subtracting two dates is the number of milliseconds
+        let timeDiff = endTime - startTime;
+        // 1000 milliseconds in a second
+        return timeDiff / 1000;
+    };
+
+    let insertResponseTime = () => {
+        if ($('#axiosAPITime')) $('#axiosAPITime').remove();
+        let $para = $("<p id = 'axiosAPITime' ></p>").html('').text('Response Time:' + calculateResponseTime(end, start));
+        $para.insertBefore('#axiosAPI');
+    };
+
+    let start, end;
+
     let addStoryToDOM = (story) => {
 
         let createElement = (el) => {
@@ -47,11 +62,14 @@ let axiousApi = (function () {
     let getStoryThroughId = (url, limit) => {
         axios.get(url)
             .then(function (response) {
+                start = Date.now();
                 let storyIDs = response.data;
                 limitedStoryIDs = storyIDs.slice(0, limit);
                 limitedStoryIDs.forEach((storyId) => {
                     getStoryObject(storyId);
-                })
+                });
+                end = Date.now();
+                insertResponseTime();
             })
             .catch(function (error) {
                 console.log(error);
@@ -66,7 +84,7 @@ let axiousApi = (function () {
 let loadStories = (url) => {
     let storyContainer = document.getElementById('axiosAPI').innerHTML = "";
     let requestedStories = document.getElementById('axiosAPIStoryNumber').value;
-    axiousApi.getStories(url, requestedStories)
+    axiosApi.getStories(url, requestedStories)
 }
 
 document.getElementById('axiosAPIButton').addEventListener('click', () => {
