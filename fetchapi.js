@@ -1,4 +1,19 @@
 let fetchAPI = (function () {
+    let calculateResponseTime = (endTime, startTime) => {
+        //The result of subtracting two dates is the number of milliseconds
+        let timeDiff = endTime - startTime;
+        // 1000 milliseconds in a second
+        return timeDiff / 1000;
+    };
+
+    let insertResponseTime = () => {
+        if ($('#fetchAPITime')) $('#fetchAPITime').remove();
+        let $para = $("<p id = 'fetchAPITime' ></p>").html('').text('Response Time:' + calculateResponseTime(end, start));
+        $para.insertBefore('#fetchAPI');
+    };
+
+    let start, end;
+
     let addStoryToDOM = (story) => {
 
         let createElement = (el) => {
@@ -41,12 +56,17 @@ let fetchAPI = (function () {
 
     let getStory = (url, limit) => {
         fetch(url)
-            .then((resp) => resp.json())
+            .then((resp) => {
+                start = Date.now();
+                return resp.json()
+            })
             .then((storyIDs) => {
                 limitedStoryIDs = storyIDs.slice(0, limit);
                 limitedStoryIDs.forEach((storyId) => {
                     findStoryById(storyId)
                 });
+                end = Date.now();
+                insertResponseTime();
             }) // Transform the data into json
             .catch(error => console.log('error:', error));
     };
