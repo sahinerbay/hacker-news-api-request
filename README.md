@@ -37,8 +37,8 @@ The application sends two requests to the [HackerNews API](https://github.com/Ha
 * [xmlHTTP](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) 
 * [xmlHTTP with Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 
 * [getJSON](http://api.jquery.com/jquery.getjson/) 
-* [fetchAPI](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - The Task Automation
-* [axios](https://github.com/mzabriskie/axios) - The Task Automation
+* [fetchAPI](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* [axios](https://github.com/mzabriskie/axios)
 
 ## License
 
