@@ -4,7 +4,7 @@ Retrieve data from HackerNews API via different Http request methods and add cal
 
 # Getting Started
 
-The application sends two requests to the HackerNews API;
+The application sends two requests to the [HackerNews API](https://github.com/HackerNews/API);
 
 * Retrieve top 10 stories out of 500,
     
